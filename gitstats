@@ -421,7 +421,11 @@ class GitDataCollector(DataCollector):
                 print 'testing directory %s' % indir
             except IndexError as ex:
                 indir = '.'
-            if indir in conf['exclude_directories'].split(','):
+            cont = false
+            for exdir in conf['exclude_directories'].split(','):
+                if indir.startswith(exdir):
+                    cont = true
+            if cont:
                 continue
 # old code                
             try:
