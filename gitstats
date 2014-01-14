@@ -417,8 +417,7 @@ class GitDataCollector(DataCollector):
 # do somthing here with the path
             
             try:
-                indirPart = fullpath.split(os.sep)[0:-1]
-                indir = fullpath.join(indirPart,os.sep)
+                indir = os.path.dirname(fullpath)
                 print 'testing directory %s' % indir
             except IndexError as ex:
                 indir = '.'
