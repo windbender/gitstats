@@ -417,7 +417,7 @@ class GitDataCollector(DataCollector):
 # do somthing here with the path
             
             try:
-                indir = filename.split(os.dirsep)[0,-1]
+                indir = filename.split(os.sep)[0,-1]
             except IndexError as ex:
                 indir = '.'
             if indir in conf['exclude_directories'].split(','):
