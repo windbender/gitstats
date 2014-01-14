@@ -48,6 +48,7 @@ conf = {
     'linear_linestats': 1,
     'project_name': '',
     'exclude_extensions': 'png,gif,pdf,json,csv,jpg,sh,txt',
+    'exclude_directories': '',
 }
 
 def getpipeoutput(cmds, quiet=True):
@@ -413,7 +414,13 @@ class GitDataCollector(DataCollector):
             sha1, fullpath = line.split()[2:4]
 
             filename = os.path.basename(fullpath) # strip directories
-
+# do somthing here with the path
+            
+            try:
+                dir = filename.split(os.direp)[0,-1]
+            except IndexError as ex:
+                dir = '.'
+# old code                
             try:
                 ext = filename.split(os.extsep)[-1]
             except IndexError as ex:
